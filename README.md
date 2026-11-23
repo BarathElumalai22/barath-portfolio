@@ -5,11 +5,6 @@ Next.js 14 (App Router) · TypeScript · Tailwind CSS · tRPC · Prisma (Postgre
 
 The portfolio content lives in `src/data/portfolio.ts`. The guestbook is the tRPC + Prisma + NextAuth backend.
 
-## Run locally
-1. `npm install`
-2. `cp .env.example .env` and fill it in (see below)
-3. `npm run db:push`
-4. `npm run dev` → http://localhost:3000
 
 ## Environment
 - `DATABASE_URL`: free Postgres from Neon, Supabase or Vercel Postgres
