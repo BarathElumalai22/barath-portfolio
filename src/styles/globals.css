@@ -1,0 +1,229 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --paper: #07080d;
+  --card: rgba(13, 14, 20, 0.82);
+  --card-elevated: rgba(19, 21, 30, 0.9);
+  --rule: #212124;
+  --ink: #f3f3f3;
+  --muted: #9c9c9c;
+  --signal: #ffffff;
+  --flag: #d97757;
+  --gold: #6f6759;
+  --pulse: #98ff38;
+  --blue: #4d7cff;
+  --slit: #ffffff59;
+  --slit-dim: #ffffff26;
+  --slit-frame: #ffffff2e;
+  --slit-frame-hi: #ffffff8c;
+  --slit-bright: #ffffffd9;
+  --slit-bar: #ffffff99;
+  --edge: #ffffff33;
+  --edge-focus: #ffffffcc;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  color-scheme: dark;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+body {
+  background-color: #07080d;
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* runs-on.dev Slit Design Language with Frosted Glass */
+.slit-frame {
+  --slit-line: var(--slit-frame);
+  --slit-over: 20px;
+  --slit-edge: 48px;
+  transition: --slit-line 0.25s, border-color 0.2s, background-color 0.2s;
+  position: relative;
+  background: rgba(12, 14, 22, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.slit-frame:hover {
+  --slit-line: var(--slit-frame-hi);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.slit-bottom {
+  background-repeat: no-repeat;
+  background-size: 100% 1px;
+  background-image: linear-gradient(90deg, transparent, var(--slit) 18%, var(--slit) 82%, transparent);
+  background-position: 0 100%;
+}
+
+.slit-top {
+  background-repeat: no-repeat;
+  background-size: 100% 1px;
+  background-image: linear-gradient(90deg, transparent, var(--slit) 18%, var(--slit) 82%, transparent);
+  background-position: 0 0;
+}
+
+.slit-bar-l {
+  --bar: var(--slit-bar);
+  background-image: linear-gradient(180deg, transparent, var(--bar) 20%, var(--bar) 80%, transparent);
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: 2px 100%;
+}
+
+.meta {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.btn-pill {
+  background: var(--signal);
+  color: var(--paper);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.4rem;
+  font-size: 12.5px;
+  font-weight: 600;
+  font-family: var(--font-mono), monospace;
+  transition: opacity 0.2s, transform 0.2s, background-color 0.2s;
+  display: inline-flex;
+}
+
+.btn-pill:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.btn-pill:active {
+  transform: translateY(1px);
+}
+
+.btn-pill-outline {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--ink);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.3rem;
+  font-size: 12.5px;
+  font-weight: 500;
+  font-family: var(--font-mono), monospace;
+  transition: all 0.2s;
+  display: inline-flex;
+}
+
+.btn-pill-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.btn-pill-outline:active {
+  transform: translateY(1px);
+}
+
+.claim-underline {
+  background: linear-gradient(90deg, transparent, var(--edge, #f3f3f3e6) 12%, var(--edge, #f3f3f3e6) 88%, transparent) bottom / 100% 2px no-repeat;
+  border: 0;
+  transition: background-size 0.15s;
+}
+
+.claim-underline:focus-visible {
+  background-size: 100% 3px;
+  outline: none;
+}
+
+.pulse-dot {
+  opacity: 1;
+  animation: 2.4s ease-in-out infinite pulse-dot;
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(152, 255, 56, 0.5);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(0.95);
+    box-shadow: 0 0 8px 2px rgba(152, 255, 56, 0.3);
+  }
+}
+
+.record-block {
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+.record-block .record-field {
+  animation: 0.28s both field-in;
+}
+
+@keyframes field-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pulse-caret {
+  display: inline-block;
+  width: 8px;
+  height: 1.1em;
+  background: var(--blue);
+  vertical-align: -2px;
+  animation: caret-blink 1s steps(2) infinite;
+}
+
+@keyframes caret-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
